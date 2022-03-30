@@ -1,0 +1,23 @@
+﻿
+@{
+}
+
+@model List<Team>
+
+
+@*See /Componenets/TeamsViewComponenet for corresponding View Componenet*@
+
+
+<div>
+    <a asp-controller="Home" asp-action="Bowlers" asp-route-teamName="">Home</a>
+</div>
+
+@foreach (Team t in Model)
+{
+    <div>
+        <a asp-controller="Home" asp-action="Bowlers" asp-route-teamName="@t.TeamName" 
+           class="btn @(ViewBag.SelectedTeam == t.TeamName ? "btn-primary" : "btn-outline-secondary")">
+        @t.TeamName
+        </a>
+    </div>
+}

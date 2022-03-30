@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bowling.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,12 @@ namespace Bowling
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<BowlersDbContext>(options =>
+           {
+               options.UseMySql(Configuration["ConnectionStrings:BowlersDbConnection"]);
+           });
+            services.AddScoped<IBowlerRepository, EFBowlerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +57,13 @@ namespace Bowling
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "Team",
+                pattern: "{controller=Home}/{action=Bowlers}/{teamName?}");
+
+
+                endpoints.MapDefaultControllerRoute();
+
+
             });
         }
     }
