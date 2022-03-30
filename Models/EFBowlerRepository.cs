@@ -18,6 +18,8 @@ namespace Bowling.Models
 
         public IQueryable<Team> Teams => _context.Teams;
 
+
+        //CRUD Functions
         public void SaveBowler(Bowler b)
         {
             _context.Update(b);

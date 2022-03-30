@@ -5,10 +5,12 @@ namespace Bowling.Models
 {
     public class Bowler
     {
+        
         [Key]
         [Required]
         public int BowlerID { get; set; }
 
+        // Max Length pieces are to meet the original DB requirements
         [MaxLength(40)]
         public string BowlerLastName { get; set; }
 

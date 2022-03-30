@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Bowling.Models;
 using Microsoft.EntityFrameworkCore;
 
+
+// See /Shared/Componenets/Teams/Defaul.cshtml to see the View
 namespace Bowling.Components
 {
     public class TeamsViewComponent : ViewComponent

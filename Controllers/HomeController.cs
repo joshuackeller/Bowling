@@ -41,6 +41,7 @@ namespace Bowling.Controllers
             return View(bowlers);
         }
 
+
         [HttpGet]
         public IActionResult EditBowler(int bowlerId)
         {
@@ -51,7 +52,6 @@ namespace Bowling.Controllers
             return View(bowler);
 
         }
-
         [HttpPost]
         public IActionResult EditBowler(Bowler b)
         {
@@ -74,8 +74,6 @@ namespace Bowling.Controllers
 
                 return View(bowler);
             }
-                
-
         }
 
         [HttpGet]
